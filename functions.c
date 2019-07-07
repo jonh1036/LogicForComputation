@@ -1,6 +1,7 @@
 #include "prototypes.h"
 
 char p1[9], p2[9], p3[9], p4[9];
+int cont = 0;
 
 int readFormat(int cod){
 	system("cls");
@@ -133,27 +134,43 @@ void fileHelperW(int cod) { //Helper de file, para escrever as marcações de mina
 
 void set(FILE *arq, int i, int j, int cod){
 	if(j == 0){
-		if(p1[i] == '1')
-			fprintf(arq, "1 ");
-		else if(p1[i] == '-')
-			fprintf(arq, "-1 ");
+		if(p1[i] == '1'){
+			cont++;
+			fprintf(arq, "%d ",cont);
+		}
+		else if(p1[i] == '-'){
+			cont++;
+			fprintf(arq, "-%d " ,cont);	
+		}
 	}
 	else if(j == 1){
-		if(p2[i] == '1')
-			fprintf(arq, "1 ");
-		else if(p2[i] == '-')
-			fprintf(arq, "-1 ");
+		if(p2[i] == '1'){
+			cont++;
+			fprintf(arq, "%d ",cont);	
+		}
+		else if(p2[i] == '-'){
+			cont++;
+			fprintf(arq, "-%d " ,cont);	
+		}
 	}
 	else if(j == 2){
-		if(p3[i] == '1')
-			fprintf(arq, "1 ");
-		else if(p3[i] == '-')
-			fprintf(arq, "-1 ");
+		if(p3[i] == '1'){
+			cont++;
+			fprintf(arq, "%d ",cont);	
+		}
+		else if(p3[i] == '-'){
+			cont++;
+			fprintf(arq, "-%d " ,cont);
+		}
 	}
 	if(cod == 2 && j == 3){
-		if(p4[i] == '1')
-			fprintf(arq, "1 ");
-		else if(p4[i] == '-')
-			fprintf(arq, "-1 ");
+		if(p4[i] == '1'){
+			cont++;
+			fprintf(arq, "%d ",cont);	
+		}
+		else if(p4[i] == '-'){
+			cont++;
+			fprintf(arq, "-%d " ,cont);	
+		}
 	}
 }
