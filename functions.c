@@ -104,7 +104,7 @@ void fileHelperW(int cod) { //Helper de file, para escrever as marcações de mina
 	fprintf(arq, "cnf ");
 	if(cod == 1){
 		fprintf(arq, "9 ");
-		fprintf(arq, "3 ");	
+		fprintf(arq, "31 ");	
 		
 		for(j=0;j<3;j++){
 			fprintf(arq, "\n");
@@ -113,11 +113,15 @@ void fileHelperW(int cod) { //Helper de file, para escrever as marcações de mina
 			}
 			fprintf(arq, "0");
 		}
+		fprintf(arq, "\n");
+		fprintf(arq, "-1 -2 0\n-1 -3 0\n-2 -3 0\n-4 -5 0\n-4 -6 0\n-5 -6 0\n-7 -8 0\n-7 -9 0\n-8 -9 0\n");	//Restrições na linha
+		fprintf(arq, "-1 -4 0\n-1 -7 0\n-4 -7 0\n-2 -5 0\n-2 -8 0\n-5 -8 0\n-3 -6 0\n-3 -9 0\n-6 -9 0\n");	//Restrições na coluna
+		fprintf(arq, "-1 -5 0\n-1 -9 0\n-5 -9 0\n-2 -4 0\n-2 -6 0\n-3 -5 0\n-3 -7 0\n-5 -7 0\n-4 -8 0\n-6 -8 0\n");	//Restrições na diagonal
 	}
 	
 	else if(cod == 2){
 		fprintf(arq, "16 ");
-		fprintf(arq, "4 \n");
+		fprintf(arq, "77 ");
 		
 		for(j=0;j<4;j++){
 			fprintf(arq, "\n");
@@ -126,6 +130,10 @@ void fileHelperW(int cod) { //Helper de file, para escrever as marcações de mina
 			}
 			fprintf(arq, "0");
 		}
+		fprintf(arq, "\n");
+		fprintf(arq, "-1 -2 0\n-1 -3 0\n-1 -4 0\n-2 -3 0\n-2 -4 0\n-3 -4 0\n-5 -6 0\n-5 -7 0\n-5 -8 0\n-6 -7 0\n-6 -8 0\n-7 -8 0\n-9 -10 0\n-9 -11 0\n-9 -12 0\n-10 -11 0\n-10 -12 0\n-11 -12 0\n-13 -14 0\n-13 -15 0\n-13 -16 0\n-14 -15 0\n-14 -16 0\n-15 -16 0\n");	//Restrições na linha
+		fprintf(arq, "-1 -5 0\n-1 -9 0\n-1 -13 0\n-5 -9 0\n-5 -13 0\n-9 -13 0\n-2 -6 0\n-2 -10 0\n-2 -14 0\n-6 -10 0\n-6 -14 0\n-10 -14 0\n-3 -7 0\n-3 -11 0\n-3 -15 0\n-7 -11 0\n-7 -15 0\n-11 -15 0\n-4 -8 0\n-4 -12 0\n-4 -16 0\n-8 -12 0\n-8 -16 0\n-12 -16 0\n");	//Restrições na coluna
+		fprintf(arq, "-1 -6 0\n-1 -11 0\n-1 -16 0\n-2 -5 0\n-2 -7 0\n-2 -12 0\n-3 -8 0\n-3 -6 0\n-3 -9 0\n-4 -7 0\n-4 -10 0\n-4 -13 0\n-5 -10 0\n-5 -15 0\n-6 -9 0\n-6 -11 0\n-7 -10 0\n-7 -12 0\n-8 -11 0\n-9 -14 0\n-10 -13 0\n-10 -15 0\n-11 -14 0\n-11 -16 0\n-8 -15 0\n");	//Restrições na diagonal
 	}
 	fclose(arq);
 	printf("\n\n Salvo com sucesso!");
@@ -138,19 +146,11 @@ void set(FILE *arq, int i, int j, int cod){
 			cont++;
 			fprintf(arq, "%d ",cont);
 		}
-		else if(p1[i] == '-'){
-			cont++;
-			fprintf(arq, "-%d " ,cont);	
-		}
 	}
 	else if(j == 1){
 		if(p2[i] == '1'){
 			cont++;
 			fprintf(arq, "%d ",cont);	
-		}
-		else if(p2[i] == '-'){
-			cont++;
-			fprintf(arq, "-%d " ,cont);	
 		}
 	}
 	else if(j == 2){
@@ -158,19 +158,11 @@ void set(FILE *arq, int i, int j, int cod){
 			cont++;
 			fprintf(arq, "%d ",cont);	
 		}
-		else if(p3[i] == '-'){
-			cont++;
-			fprintf(arq, "-%d " ,cont);
-		}
 	}
 	if(cod == 2 && j == 3){
 		if(p4[i] == '1'){
 			cont++;
 			fprintf(arq, "%d ",cont);	
-		}
-		else if(p4[i] == '-'){
-			cont++;
-			fprintf(arq, "-%d " ,cont);	
 		}
 	}
 }
